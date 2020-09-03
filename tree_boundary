@@ -1,0 +1,93 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class tree
+ {
+	public:
+		int data;
+		tree *left;
+		tree *right;
+};
+
+
+int findBoundarySum(tree* root)
+{
+  if(root==NULL) 
+	  return 0;
+  int sum=0; 
+  sum+=root->data; 
+  tree* temp=root, *store; 
+  queue<tree*> q; 
+
+
+  q.push(temp);
+  while(!q.empty())
+  {
+	store=q.front();
+	q.pop();
+
+	if(store->left==NULL && store->right==NULL) 
+		sum+=store->data;
+	if(store->left)
+		q.push(store->left);
+	if(store->right)
+		q.push(store->right);
+  }
+
+
+  temp=root->left;
+  while(!(temp->right==NULL && temp->left==NULL))
+ {
+	  sum+=temp->data;
+	  if(temp->left)
+		  temp=temp->left;
+	  else
+		  temp=temp->right;
+ }
+
+ temp=root->right;
+ while(!(temp->right==NULL && temp->left==NULL))
+ {
+	 sum+=temp->data;
+	 if(temp->right)
+		  temp=temp->right;
+	 else
+		  temp=temp->left;
+ }
+
+  return sum;
+}
+
+
+tree* newnode(int data)  
+{ 
+	tree* node = (tree*)malloc(sizeof(tree)); 
+	node->data = data; 
+	node->left = NULL; 
+	node->right = NULL; 
+	return(node); 
+} 
+
+int main() 
+{ 
+
+	cout<<"Tree is built"<<endl;
+	
+	tree *root=newnode(18); 
+	root->left= newnode(6); 
+	root->right= newnode(25); 
+	root->right->right=newnode(19);
+	root->right->right->left=newnode(13);
+	root->left->left=newnode(12); 
+	root->left->right=newnode(16);
+	root->left->right->left=newnode(35);
+	root->left->right->right=newnode(11);
+
+	cout<<"Boundary sum is "<<findBoundarySum(root)<<endl;
+
+	return 0; 
+}
+
+    OUTPUT
+ Tree is built
+ Boundary sum is 139
