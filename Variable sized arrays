@@ -28,8 +28,7 @@ int main()
         cin >> a >> j;
         cout << v[a][j] << '\n';
     }
-
-    return 0;
+  return 0;
 }
 
     OUTPUT
