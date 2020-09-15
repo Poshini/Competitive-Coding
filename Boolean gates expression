@@ -1,0 +1,46 @@
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+bool evalbool(string s)
+{
+  int n= s.length();
+  for(int i=0;i<n-1;i++)
+  {
+    if(s[i+1] == 'A')
+    {
+      if(s[i+2] == '0' || s[i] == '0')
+       s[i+2] = '0';
+      else
+       s[i+2] = '1';
+    }
+    else if( s[i+1] == 'B')
+    {
+      if(s[i+2] == '1' || s[i] == '1')
+      s[i+2] = '1';
+      else
+      s[i+2] = '0';
+    }
+    else
+    {
+      if(s[i+2] == s[i])
+      s[i+2] = '0';
+      else
+      s[i+2] = '1';
+    }
+  }
+  return s[n-1] - '0';
+}
+
+int main()
+{
+  string s;
+  cout<<"Enter the string: ";
+  cin>>s;
+  cout<<evalbool(s);
+  return 0;
+}
+
+        OUTPUT
+Enter the string: 0A0B1
+1
