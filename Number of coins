@@ -1,0 +1,39 @@
+#include<bits/stdc++.h> 
+#include<iostream>
+using namespace std;  
+int minCoins(int coins[], int m, int V) 
+{ 
+   if (V == 0) 
+   return 0;
+   int res = INT_MAX; 
+   for (int i=0; i<m; i++) 
+   { 
+     if (coins[i] <= V) 
+     { 
+         int sub_res = minCoins(coins, m, V-coins[i]); 
+         if (sub_res != INT_MAX && sub_res + 1 < res) 
+            res = sub_res + 1; 
+     } 
+   } 
+   return res; 
+} 
+int main() 
+{ 
+	int n,i,v;
+  cout<<"Enter the number of coins: ";
+	cin>>n;
+    int coins[n];
+  cout<<"Enter the values of the "<<n<<" coins: ";
+	for(i=0;i<n;i++)
+		cin>>coins[i]; 
+  cout<<"Enter the amount: ";
+	cin>>v;
+    cout<<"Minimum number of coins required is: "<<minCoins(coins, n, v); 
+    return 0; 
+}
+
+       OUTPUT
+Enter the number of coins: 5
+ENter the value of 5 coins: 3 7 1 9 4
+Enter the amount: 34
+Minimum number of coins required is: 4
