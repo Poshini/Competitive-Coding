@@ -1,0 +1,46 @@
+#include <bits/stdc++.h> 
+using namespace std; 
+  
+stack<int> sortStack(stack<int> &input) 
+{ 
+    stack<int> tmpStack; 
+  
+    while (!input.empty()) 
+    { 
+        int tmp = input.top(); 
+        input.pop(); 
+  
+        while (!tmpStack.empty() && tmpStack.top() > tmp) 
+        { 
+            input.push(tmpStack.top()); 
+            tmpStack.pop(); 
+        } 
+
+        tmpStack.push(tmp); 
+    } 
+  
+    return tmpStack; 
+} 
+
+int main() 
+{ 
+    stack<int> input; 
+    input.push(96); 
+    input.push(514); 
+    input.push(67); 
+    input.push(13); 
+    input.push(58); 
+    input.push(29); 
+  
+    stack<int> tmpStack = sortStack(input); 
+    cout << "Sorted numbers are:\n"; 
+  
+    while (!tmpStack.empty()) 
+    { 
+        cout << tmpStack.top()<< " "; 
+        tmpStack.pop(); 
+    } 
+} 
+   OUTPUT
+Sorted numbers are:
+514 96 67 58 29 13
