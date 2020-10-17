@@ -1,0 +1,42 @@
+#include <bits/stdc++.h> 
+using namespace std; 
+   
+int countKdivPairs(int A[], int n, int K) 
+{ 
+    int freq[50] = { 0 }; 
+  
+    for (int i = 0; i < n; i++) 
+        ++freq[A[i] % K]; 
+  
+    int sum = freq[0] * (freq[0] - 1) / 2; 
+  
+    for (int i = 1; i <= K / 2 && i != (K - i); i++) 
+        sum += freq[i] * freq[K - i]; 
+    
+    if (K % 2 == 0) 
+        sum += (freq[K / 2] * (freq[K / 2] - 1) / 2); 
+    return sum; 
+} 
+  
+int main() 
+{ 
+    int n,K;
+    cout<<"Enter the number of elements: ";
+    cin>>n;
+    int A[n];
+    cout<<"Enter the elements: ";
+    for(int i=0;i<n;i++)
+    {
+      cin>>A[i];
+    }
+    cout<<"Enter the value: ";
+    cin>>K; 
+    cout << countKdivPairs(A, n, K); 
+  
+    return 0; 
+} 
+          OUTPUT
+Enter the number of elements: 5
+Enter the elements: 4 6 1 3 9
+Enter the value: 4
+2
