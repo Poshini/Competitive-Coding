@@ -18,8 +18,7 @@ stack<int> sortStack(stack<int> &input)
 
         tmpStack.push(tmp); 
     } 
-  
-    return tmpStack; 
+  return tmpStack; 
 } 
 
 int main() 
