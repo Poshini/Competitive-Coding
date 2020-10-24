@@ -28,6 +28,7 @@ int main()
 		cin>>coins[i]; 
   cout<<"Enter the amount: ";
 	cin>>v;
+	
     cout<<"Minimum number of coins required is: "<<minCoins(coins, n, v); 
     return 0; 
 }
