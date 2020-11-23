@@ -1,0 +1,57 @@
+#include <iostream> 
+#include <string.h> 
+#include <vector> 
+#define M 3 
+#define N 4 
+using namespace std; 
+ 
+bool bpm(int table[M][N], int u, bool seen[], int matchR[]) 
+{
+    for (int v = 0; v < N; v++) 
+    { 
+        if (table[u][v]>0 && !seen[v]) 
+        { 
+            seen[v] = true; 
+            if (matchR[v] < 0 || bpm(table, matchR[v], seen, matchR)) 
+            { 
+                matchR[v] = u; 
+                return true; 
+            } 
+        } 
+    } 
+    return false; 
+} 
+ 
+int maxBPM(int table[M][N]) 
+{ 
+    int matchR[N]; 
+  
+   
+    memset(matchR, -1, sizeof(matchR)); 
+  
+    int result = 0; 
+    for (int u = 0; u < M; u++) 
+    {
+        bool seen[N]; 
+        memset(seen, 0, sizeof(seen)); 
+  
+       
+        if (bpm(table, u, seen, matchR)) 
+            result++; 
+    } 
+  
+    cout << "The number of maximum packets sent in the time slot is "
+         << result << "\n"; 
+  
+    for (int x=0; x<N; x++) 
+        if (matchR[x]+1!=0) 
+            cout << "T" << matchR[x]+1 << "-> R" << x+1 << "\n"; 
+    return result; 
+} 
+
+int main() 
+{ 
+    int table[M][N] = {{0, 2, 0}, {3, 0, 1}, {2, 4, 0}}; 
+    int max_flow = maxBPM(table); 
+    return 0; 
+} 
