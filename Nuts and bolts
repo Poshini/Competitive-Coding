@@ -9,7 +9,6 @@ void printArray(char arr[])
     printf("\n"); 
 } 
   
-
 int partition(char arr[], int low,  
               int high, char pivot) 
 { 
@@ -68,8 +67,8 @@ int main()
     printArray(nuts); 
     printArray(bolts); 
 } 
-      OUTPUT
- Matched nuts and bolts are :-
+      OUTPUT :-
+ Matched nuts and bolts are :
  # $ % & @ ^
  # $ % & @ ^
  
