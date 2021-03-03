@@ -53,7 +53,7 @@ void matchPairs(char nuts[], char bolts[],
         matchPairs(nuts, bolts, low, pivot - 1); 
         matchPairs(nuts, bolts, pivot + 1, high); 
     } 
-} 
+}  
   
 int main() 
 {
