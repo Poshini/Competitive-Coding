@@ -16,7 +16,7 @@ int decode(string s)
         {
             n=2; 
         }
-        else
+        else 
         {
             n=1;
         }
