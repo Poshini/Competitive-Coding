@@ -17,7 +17,7 @@ int countKdivPairs(int A[], int n, int K)
         sum += (freq[K / 2] * (freq[K / 2] - 1) / 2); 
     return sum; 
 } 
-  
+   
 int main() 
 { 
     int n,K;
