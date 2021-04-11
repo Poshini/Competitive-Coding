@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-
+ 
 int decode(string s)
 {
     int l=s.length();
