@@ -18,7 +18,7 @@ bool bpm(int table[M][N], int u, bool seen[], int matchR[])
                 return true; 
             } 
         } 
-    } 
+    }  
     return false; 
 } 
  
